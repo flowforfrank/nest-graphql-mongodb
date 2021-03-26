@@ -2,6 +2,37 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Characteristics {
+  lifespan: String!
+  size: String!
+  coat: String!
+  color: String!
+}
+
+type CatType {
+  breed: String!
+  characteristics: Characteristics!
+}
+
+input CharacteristicsInput {
+  lifespan: String!
+  size: String!
+  coat: String!
+  color: String!
+}
+
+input CatInputType {
+  breed: String!
+  characteristics: CharacteristicsInput!
+}
+
 type Query {
   hello: String!
+  cats: [CatType!]!
+}
+
+type Mutation {
+  createCat(input: CatInputType!): CatType!
+  updateCat(input: CatInputType!, id: String!): CatType!
+  deleteCat(id: String!): CatType!
 }
